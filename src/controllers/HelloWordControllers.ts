@@ -1,23 +1,28 @@
 import { ICustomRequest, ICustomResponse } from "../interfaces/ICustomRequest";
 
-export interface INewHelloWord {
+export interface IReqHelloWord {
     message: string;
+};
+
+export interface IResHelloWord {
+    message: string;
+    id?: string;
 };
 
 class HelloWordControllers {
 
-    async getFullHelloWord(req: ICustomRequest<any>, res: ICustomResponse) {
+    async getFullHelloWord(req: ICustomRequest<any>, res: ICustomResponse<IResHelloWord>) {
         return res.status(200).json({ message: 'Hello Word!' });
     };
 
-    async createNewHelloWord(req: ICustomRequest<INewHelloWord>, res: ICustomResponse) {
+    async createNewHelloWord(req: ICustomRequest<IReqHelloWord>, res: ICustomResponse<IResHelloWord>) {
 
         const { message } = req.body;
 
-        return res.status(200).json({ message });
+        return res.status(200).json({ message })
     };
 
-    async updateHelloWord(req: ICustomRequest<INewHelloWord>, res: ICustomResponse) {
+    async updateHelloWord(req: ICustomRequest<IReqHelloWord>, res: ICustomResponse<IResHelloWord>) {
 
         const { id } = req.params;
         const { message } = req.body;
@@ -25,7 +30,7 @@ class HelloWordControllers {
         return res.status(200).json({ id, message });
     };
 
-    async deleteHelloWord(req: ICustomRequest<INewHelloWord>, res: ICustomResponse) {
+    async deleteHelloWord(req: ICustomRequest<IReqHelloWord>, res: ICustomResponse<IResHelloWord>) {
 
         const { id } = req.params;
         const { message } = req.body;
