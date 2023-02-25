@@ -1,4 +1,5 @@
-import { ICustomRequest, ICustomResponse } from "../interfaces/ICustomRequest";
+import { ICustomRequest } from "../interfaces/ICustomRequest";
+import { ICustomResponse } from "../interfaces/ICustomResponse";
 
 export interface IHelloWord {
     id?: string;

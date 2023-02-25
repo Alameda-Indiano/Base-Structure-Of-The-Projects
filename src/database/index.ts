@@ -1,9 +1,10 @@
 import ConfigDatabase from "../config/Database";
+import { Sequelize } from "sequelize";
 import { models } from "../models";
 
 class Database {
 
-    private connection;
+    private connection: Sequelize;
 
     constructor() {
         this.connection = ConfigDatabase;

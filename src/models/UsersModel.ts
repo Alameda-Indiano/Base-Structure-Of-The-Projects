@@ -7,9 +7,11 @@ import {
     Association, 
     HasManyCreateAssociationMixin, 
     NonAttribute,
-    HasManyGetAssociationsMixin
+    HasManyGetAssociationsMixin,
+    Sequelize
 } from 'sequelize';
 
+import { IModels } from '.';
 import { Projects } from './ProjectsModel';
 
 export class Users extends Model<InferAttributes<Users, { omit: 'projects' }>, InferCreationAttributes<Users, { omit: 'projects' }>> {
@@ -32,7 +34,7 @@ export class Users extends Model<InferAttributes<Users, { omit: 'projects' }>, I
 }
 
 export const UsersModel = {
-    init: (sequelize: any) => {
+    init: (sequelize: Sequelize) => {
         Users.init({
             id: {
                 type: DataTypes.UUIDV4,
@@ -63,7 +65,7 @@ export const UsersModel = {
         });
     },
 
-    associate(models: any) {
+    associate(models: IModels) {
         Users.hasMany(models.Projects);
     }
 }

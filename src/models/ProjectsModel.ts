@@ -5,8 +5,11 @@ import {
     CreationOptional, 
     DataTypes,
     ForeignKey,
-    NonAttribute
+    NonAttribute,
+    Sequelize
 } from 'sequelize';
+
+import { IModels } from '.';
 import { Users } from './UsersModel';
 
 export class Projects extends Model<InferAttributes<Projects>, InferCreationAttributes<Projects>> {
@@ -22,7 +25,7 @@ export class Projects extends Model<InferAttributes<Projects>, InferCreationAttr
 };
 
 export const ProjectsModel = {
-    init: (sequelize: any) => {
+    init: (sequelize: Sequelize) => {
         Projects.init({
             id: {
                 type: DataTypes.UUIDV4,
@@ -48,7 +51,7 @@ export const ProjectsModel = {
         });
     },
 
-    associate(models: any) {
+    associate(models: IModels) {
         Projects.belongsTo(models.Users, 
             { 
                 foreignKey: "userId"
