@@ -16,7 +16,7 @@ class Database {
     };
 
     private associate() {
-        models.forEach((model) => {
+        models.forEach((model: any) => {
             if (model.associate) {
                 model.associate(this.connection.models);
             };

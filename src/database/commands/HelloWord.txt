@@ -1,2 +1,0 @@
-22/02/2023
-npx sequelize-cli model:generate --name HelloWord --attributes message:string

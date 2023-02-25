@@ -1,1 +1,7 @@
-export const models: Array<any> = [];
+import { ProjectsModel } from "./ProjectsModel";
+import { UsersModel } from "./UsersModel";
+
+export const models = [
+    UsersModel,
+    ProjectsModel
+];

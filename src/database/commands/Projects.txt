@@ -1,0 +1,2 @@
+22/02/2023
+npx sequelize-cli model:generate --name Projects --attributes name:string,description:string
