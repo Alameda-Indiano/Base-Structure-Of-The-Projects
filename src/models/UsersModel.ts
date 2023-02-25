@@ -1,8 +1,18 @@
 import {
-    Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes
+    Model, 
+    InferAttributes, 
+    InferCreationAttributes, 
+    CreationOptional, 
+    DataTypes, 
+    Association, 
+    HasManyCreateAssociationMixin, 
+    NonAttribute,
+    HasManyGetAssociationsMixin
 } from 'sequelize';
 
-export class Users extends Model<InferAttributes<Users>, InferCreationAttributes<Users>> {
+import { Projects } from './ProjectsModel';
+
+export class Users extends Model<InferAttributes<Users, { omit: 'projects' }>, InferCreationAttributes<Users, { omit: 'projects' }>> {
 
     declare id: CreationOptional<number>;
     declare name: string;
@@ -10,6 +20,14 @@ export class Users extends Model<InferAttributes<Users>, InferCreationAttributes
     declare password: string;
     declare createdAt: CreationOptional<Date>;
     declare updatedAt: CreationOptional<Date>;
+
+    declare projects?: NonAttribute<Projects[]>;
+    declare createProject: HasManyCreateAssociationMixin<Projects, 'userId'>;
+    declare getProjects: HasManyGetAssociationsMixin<Projects>;
+
+    declare static associations: {
+        projects: Association<Users, Projects>;
+    };
 
 }
 
@@ -43,5 +61,9 @@ export const UsersModel = {
                 plural: 'users'
             }
         });
+    },
+
+    associate(models: any) {
+        Users.hasMany(models.Projects);
     }
 }
