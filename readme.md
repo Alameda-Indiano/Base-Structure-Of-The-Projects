@@ -31,14 +31,12 @@ $ cd Base-Structure-Of-The-Projects
 $ npm install
 ```
 
-#### Crie o arquivo de variáveis de ambiente
+#### Configure suas variáveis de ambiente
+
+- 1° Crie o arquivo <strong>.env</strong> na raiz do projeto
+- 2° Cadastre as variáveis de ambiente seguindo o exemplo que está no arquivo <strong>.env.example</strong>
 ```bash
 $ .env
-```
-
-#### Agora cadastre suas variáveis de ambiente seguindo o exemplo que está no arquivo
-```bash
-$ .env.example
 ```
 
 #### Execute a Aplicação 
