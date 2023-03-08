@@ -87,6 +87,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Sequelize](https://sequelize.org)
+- [Jest](https://www.npmjs.com/package/jest)
 
 ___
 
